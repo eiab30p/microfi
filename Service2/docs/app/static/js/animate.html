@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <title>animate.js</title>
+  <link rel="stylesheet" href="..\..\..\pycco.css">
+</head>
+<body>
+<div id='container'>
+  <div id="background"></div>
+  <div class='section'>
+    <div class='docs'><h1>animate.js</h1></div>
+  </div>
+  <div class='clearall'>
+  <div class='section' id='section-0'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-0'>#</a>
+      </div>
+      
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span></span><span class="nx">jQuery</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">)</span> <span class="p">{</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-1'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-1'>#</a>
+      </div>
+      <p>animate effect  </p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_flash&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated flash&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated flash&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span>
+	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_bounce&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated bounce&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated bounce&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span>
+	
+	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_shake&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated shake&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated shake&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span>
+	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_tada&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated tada&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated tada&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span>
+	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_swing&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated swing&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated swing&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span>
+	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_wobble&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated wobble&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated wobble&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span>
+	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_wiggle&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated wiggle&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated wiggle&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span>
+	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_pulse&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated pulse&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated pulse&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span>
+	
+	
+	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_flip&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated flip&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated flip&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span>
+	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_flipInX&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated flipInX&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated flipInX&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span>
+	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_flipOutX&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated flipOutX&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated flipOutX&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span>
+	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_flipInY&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated flipInY&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated flipInY&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span>
+	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_flipOutY&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated flipOutY&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated flipOutY&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-2'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-2'>#</a>
+      </div>
+      <p>Fading entrances</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_fadeIn&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated fadeIn&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated fadeIn&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span>		
+	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_fadeInUp&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated fadeInUp&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated fadeInUp&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span>	
+	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_fadeInDown&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated fadeInDown&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated fadeInDown&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span>
+	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_fadeInLeft&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated fadeInLeft&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated fadeInLeft&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span>
+	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_fadeInRight&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated fadeInRight&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated fadeInRight&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span>	
+	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_fadeInUpBig&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated fadeInUpBig&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated fadeInUpBig&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span>		
+	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_fadeInUpBig&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated fadeInUpBig&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated fadeInUpBig&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span>		
+	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_fadeInDownBig&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated fadeInDownBig&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated fadeInDownBig&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span>	
+	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_fadeInLeftBig&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated fadeInLeftBig&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated fadeInLeftBig&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span>	
+	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_fadeInRightBig&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated fadeInRightBig&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated fadeInRightBig&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-3'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-3'>#</a>
+      </div>
+      <p>Fading exits</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_fadeOut&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated fadeOut&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated fadeOut&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span>	
+	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_fadeOutUp&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated fadeOutUp&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated fadeOutUp&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span>	
+	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_fadeOutDown&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated fadeOutDown&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated fadeOutDown&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span>		
+	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_fadeOutLeft&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated fadeOutLeft&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated fadeOutLeft&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span>		
+	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_fadeOutRight&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated fadeOutRight&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated fadeOutRight&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span>	
+	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_fadeOutUpBig&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated fadeOutUpBig&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated fadeOutUpBig&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span>	
+	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_fadeOutDownBig&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated fadeOutDownBig&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated fadeOutDownBig&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span>	
+	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_fadeOutLeftBig&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated fadeOutLeftBig&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated fadeOutLeftBig&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span>	
+	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_fadeOutRightBig&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated fadeOutRightBig&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated fadeOutRightBig&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-4'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-4'>#</a>
+      </div>
+      <p>Bouncing entrances</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_bounceIn&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated bounceIn&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated bounceIn&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span>
+	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_bounceInDown&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated bounceInDown&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated bounceInDown&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span>
+	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_bounceInUp&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated bounceInUp&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated bounceInUp&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span>	
+	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_bounceInLeft&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated bounceInLeft&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated bounceInLeft&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span>
+	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_bounceInRight&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated bounceInRight&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated bounceInRight&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-5'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-5'>#</a>
+      </div>
+      <p>Bouncing exits</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_bounceOut&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated bounceOut&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated bounceOut&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span>
+	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_bounceOutDown&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated bounceOutDown&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated bounceOutDown&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span>
+	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_bounceOutUp&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated bounceOutUp&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated bounceOutUp&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span>	
+	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_bounceOutLeft&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated bounceOutLeft&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated bounceOutLeft&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span>
+	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_bounceOutRight&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated bounceOutRight&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated bounceOutRight&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-6'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-6'>#</a>
+      </div>
+      <p>Rotating entrances  </p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_rotateIn&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated rotateIn&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated rotateIn&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span>
+	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_rotateInDownLeft&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated rotateInDownLeft&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated rotateInDownLeft&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span>
+	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_rotateInDownRight&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated rotateInDownRight&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated rotateInDownRight&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span>
+	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_rotateInUpRight&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated rotateInUpRight&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated rotateInUpRight&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span>
+	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_rotateInUpLeft&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated rotateInUpLeft&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated rotateInUpLeft&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-7'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-7'>#</a>
+      </div>
+      <p>Rotating exits</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_rotateOut&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated rotateOut&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated rotateOut&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span>
+	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_rotateOutDownLeft&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated rotateOutDownLeft&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated rotateOutDownLeft&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span>
+	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_rotateOutDownRight&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated rotateOutDownRight&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated rotateOutDownRight&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span>	
+	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_rotateOutUpLeft&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated rotateOutUpLeft&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated rotateOutUpLeft&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span>
+	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_rotateOutUpRight&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated rotateOutUpRight&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated rotateOutUpRight&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-8'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-8'>#</a>
+      </div>
+      <p>Lightspeed</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_lightSpeedIn&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated lightSpeedIn&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated lightSpeedIn&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span>
+	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_lightSpeedOut&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated lightSpeedOut&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated lightSpeedOut&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-9'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-9'>#</a>
+      </div>
+      <p>specials</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_hinge&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated hinge&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated hinge&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span>
+	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_rollIn&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated rollIn&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated rollIn&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span>	
+	<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.e_rollOut&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;animated rollOut&quot;</span><span class="p">);</span>
+		<span class="p">},</span>
+		<span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;animated rollOut&quot;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">);</span>
+
+
+
+<span class="p">});</span>
+
+</pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+</div>
+</body>

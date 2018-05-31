@@ -1,0 +1,118 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	{% if title %}
+		<title>{{title}} - WTE</title>
+	{% else %}
+		<title>What The Eddy</title>
+	{% endif %}
+	<!-- utf-8 works for most cases -->
+	<meta charset="utf-8">
+	<!-- Forcing initial-scale shouldn't be necessary -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Use the latest (edge) version of IE rendering engine -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!-- Disable auto-scale in iOS 10 Mail entirely -->
+	<meta name="x-apple-disable-message-reformatting">
+
+	<!-- <meta name="description" content="">
+	<meta name="author" content=""> -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<link href="/static/css/bootstrap-responsive.css" rel="stylesheet">
+	<link href="/static/css/style.css" rel="stylesheet">
+	<link href="/static/css/default.css" rel="stylesheet">
+
+	<link rel="shortcut icon" href="/static/img/professores.png">
+</head>
+
+<body>
+	<div class="navbar-wrapper">
+		<div class="navbar navbar-inverse navbar-fixed-top remove-margin">
+			<div class="new-navbar-inner">
+				<div class="container">
+					<!-- Responsive navbar -->
+					<a class="btn btn-navbar" data-toggle="collapse"
+					data-target=".nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a>
+				<h1 class="brand"><a href="/">What The Eddy</a></h1>
+				<!-- navigation -->
+				<nav class="pull-right nav-collapse">
+					<ul id="menu-main" class="nav">
+						<li><a title="about" href="/about">About</a></li>
+						<li><a title="blog" href="/">Blog</a></li>
+						<li><a title="chat" href="/">Dev Room</a></li>
+						<li><a title="contact" href="/contact">Contact</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- End of Navigation -->
+<!-- Main Content-->
+
+<div class="contentdiv container-fluid">
+	{% with messages = get_flashed_messages() %}
+	  {% if messages %}
+
+	    {% for message in messages %}
+	      <p class=flashes>{{ message }}</p>
+	    {% endfor %}
+
+	  {% endif %}
+	{% endwith %}
+
+	{% block mainContent %}{% endblock %}
+</div>
+	<!-- End of Main Content -->
+	<!-- Start of Foorter-->
+
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-sm-4 col-md-4 textbox-height">
+		      <div class="mdl-textfield mdl-textfield--floating-label
+		      mdl-js-textfield mdl-textfield--full-width  is-upgraded"
+		      data-upgraded=",MaterialTextfield">
+		      </div>
+		    </div>
+				<div class="col-xs-12 col-sm-4 col-md-4 textbox-height">
+					<div class="mdl-textfield mdl-textfield--floating-label
+					mdl-js-textfield mdl-textfield--full-width  is-upgraded"
+					data-upgraded=",MaterialTextfield">
+					&copy; What The Eddy
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-4 col-md-4 textbox-height">
+					<div class="mdl-textfield mdl-textfield--floating-label
+					mdl-js-textfield mdl-textfield--full-width  is-upgraded"
+					data-upgraded=",MaterialTextfield">
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<script src="/static/js/jquery.js"></script>
+	<script src="/static/js/jquery.scrollTo.js"></script>
+	<script src="/static/js/jquery.nav.js"></script>
+	<script src="/static/js/jquery.localScroll.js"></script>
+	<script src="/static/js/bootstrap.js"></script>
+	<script src="/static/js/jquery.prettyPhoto.js"></script>
+	<script src="/static/js/isotope.js"></script>
+	<script src="/static/js/jquery.flexslider.js"></script>
+	<script src="/static/js/inview.js"></script>
+	<script src="/static/js/animate.js"></script>
+	<script src="/static/js/custom.js"></script>
+
+</body>
+</html>

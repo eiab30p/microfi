@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <title>inview.js</title>
+  <link rel="stylesheet" href="..\..\..\pycco.css">
+</head>
+<body>
+<div id='container'>
+  <div id="background"></div>
+  <div class='section'>
+    <div class='docs'><h1>inview.js</h1></div>
+  </div>
+  <div class='clearall'>
+  <div class='section' id='section-0'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-0'>#</a>
+      </div>
+      <p>*
+ * author Remy Sharp
+ * url http://remysharp.com/2009/01/26/element-in-view-event-plugin/</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span></span> <span class="o">*</span><span class="err">/</span>
+<span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="nx">getViewportHeight</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">height</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">innerHeight</span><span class="p">;</span> <span class="c1">// Safari, Opera</span>
+        <span class="kd">var</span> <span class="nx">mode</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">compatMode</span><span class="p">;</span>
+
+        <span class="k">if</span> <span class="p">(</span> <span class="p">(</span><span class="nx">mode</span> <span class="o">||</span> <span class="o">!</span><span class="nx">$</span><span class="p">.</span><span class="nx">support</span><span class="p">.</span><span class="nx">boxModel</span><span class="p">)</span> <span class="p">)</span> <span class="p">{</span> <span class="c1">// IE, Gecko</span>
+            <span class="nx">height</span> <span class="o">=</span> <span class="p">(</span><span class="nx">mode</span> <span class="o">==</span> <span class="s1">&#39;CSS1Compat&#39;</span><span class="p">)</span> <span class="o">?</span>
+            <span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">clientHeight</span> <span class="o">:</span> <span class="c1">// Standards</span>
+            <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">clientHeight</span><span class="p">;</span> <span class="c1">// Quirks</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="nx">height</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nx">$</span><span class="p">(</span><span class="nb">window</span><span class="p">).</span><span class="nx">scroll</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">vpH</span> <span class="o">=</span> <span class="nx">getViewportHeight</span><span class="p">(),</span>
+            <span class="nx">scrolltop</span> <span class="o">=</span> <span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">scrollTop</span> <span class="o">?</span>
+                <span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">scrollTop</span> <span class="o">:</span>
+                <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">scrollTop</span><span class="p">),</span>
+            <span class="nx">elems</span> <span class="o">=</span> <span class="p">[];</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-1'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-1'>#</a>
+      </div>
+      <p>naughty, but this is how it knows which elements to check for</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>        <span class="nx">$</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">$</span><span class="p">.</span><span class="nx">cache</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">events</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="p">.</span><span class="nx">events</span><span class="p">.</span><span class="nx">inview</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">elems</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">handle</span><span class="p">.</span><span class="nx">elem</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nx">elems</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">$</span><span class="p">(</span><span class="nx">elems</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+                <span class="kd">var</span> <span class="nx">$el</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">),</span>
+                    <span class="nx">top</span> <span class="o">=</span> <span class="nx">$el</span><span class="p">.</span><span class="nx">offset</span><span class="p">().</span><span class="nx">top</span><span class="p">,</span>
+                    <span class="nx">height</span> <span class="o">=</span> <span class="nx">$el</span><span class="p">.</span><span class="nx">height</span><span class="p">(),</span>
+                    <span class="nx">inview</span> <span class="o">=</span> <span class="nx">$el</span><span class="p">.</span><span class="nx">data</span><span class="p">(</span><span class="s1">&#39;inview&#39;</span><span class="p">)</span> <span class="o">||</span> <span class="kc">false</span><span class="p">;</span>
+
+                <span class="k">if</span> <span class="p">(</span><span class="nx">scrolltop</span> <span class="o">&gt;</span> <span class="p">(</span><span class="nx">top</span> <span class="o">+</span> <span class="nx">height</span><span class="p">)</span> <span class="o">||</span> <span class="nx">scrolltop</span> <span class="o">+</span> <span class="nx">vpH</span> <span class="o">&lt;</span> <span class="nx">top</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="nx">inview</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="nx">$el</span><span class="p">.</span><span class="nx">data</span><span class="p">(</span><span class="s1">&#39;inview&#39;</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+                        <span class="nx">$el</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="s1">&#39;inview&#39;</span><span class="p">,</span> <span class="p">[</span> <span class="kc">false</span> <span class="p">]);</span>                        
+                    <span class="p">}</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">scrolltop</span> <span class="o">&lt;</span> <span class="p">(</span><span class="nx">top</span> <span class="o">+</span> <span class="nx">height</span><span class="p">))</span> <span class="p">{</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">inview</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="nx">$el</span><span class="p">.</span><span class="nx">data</span><span class="p">(</span><span class="s1">&#39;inview&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+                        <span class="nx">$el</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="s1">&#39;inview&#39;</span><span class="p">,</span> <span class="p">[</span> <span class="kc">true</span> <span class="p">]);</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">});</span>
+        <span class="p">}</span>
+    <span class="p">});</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-2'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-2'>#</a>
+      </div>
+      <p>kick the event to pick up any elements already in view.
+note however, this only works if the plugin is included after the elements are bound to 'inview'</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>    <span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">(</span><span class="nb">window</span><span class="p">).</span><span class="nx">scroll</span><span class="p">();</span>
+    <span class="p">});</span>
+<span class="p">})(</span><span class="nx">jQuery</span><span class="p">);</span>
+
+</pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+</div>
+</body>

@@ -1,0 +1,157 @@
+::-moz-selection {
+	background:#F9C869;
+}
+::selection {
+	background:#F9C869;
+}
+
+.navbar .brand a:hover {
+	color: black;
+	background-color: #F9C869;
+}
+
+ul#menu-main > li > a:hover {
+	color: black;
+	background-color: #F9C869;
+}
+
+ul#menu-main > li > a:focus,ul#menu-main > li > a:active, ul#menu-main > li > a.selected, ul#menu-main li a.selected:active    {
+	color: black;
+	background-color: #F9C869;
+}
+#header-wrapper h1 span {
+	color:#1BAC91;
+}
+
+#header-wrapper input[type=submit] {
+	background: #1BAC91 !important;
+}
+
+#theme-form input[type=submit] {
+	background: #1BAC91 !important;
+}
+
+.btn.btn-theme {
+	background: #26c8aa !important;
+}
+
+/* blog */
+.home-post .post-meta {
+	background: #1BAC91;
+}
+
+/* com */
+.tabbable ul.nav-tabs li.active a,.tabbable ul.nav-tabs li a:hover {
+	color: #1BAC91;
+}
+.accordion .accordion-heading a.active {
+	color: #1BAC91;
+}
+
+#tweet ul li a {
+	color: #1BAC91;
+}
+
+
+/* works */
+#filters ul li a:hover h5, #filters ul li a.active h5 {
+	background: #1BAC91;
+	border-color: #1BAC91;
+}
+
+.portfolio .portfolio-overlay {
+	background: #1BAC91;
+}
+
+/* icon */
+i.icon-bgdark:hover {
+	background: #26c8aa;
+}
+
+i.icon-bgdark.active {
+	background: #e06d5e;
+}
+
+/* email input field */
+#email {
+	width: 100%;
+}
+
+/* Langing Page Icon */
+.LandingPageIcon{
+	height: 20em;
+	width: 20em;
+	align-content: center;
+}
+
+/*Overiding Text Hieght */
+select, textarea, input[type="text"], input[type="password"],
+input[type="datetime"], input[type="datetime-local"], input[type="date"],
+input[type="month"], input[type="time"], input[type="week"],
+input[type="number"], input[type="email"], input[type="url"],
+input[type="search"], input[type="tel"], input[type="color"],
+.uneditable-input{
+	height: 40px;
+}
+
+/*Overiding Position for text*/
+
+div {
+    position: initial;
+}
+
+.textbox-height{
+	height: 20px;
+}
+
+/* Error Message Format*/
+.error_message{
+	padding-bottom: 1em;
+}
+
+/* Email Text Box was not align */
+input[type="email"], .uneditable-input{
+	padding-bottom: 8px;
+	padding-top: 8px;
+	padding-right: 8px;
+	padding-left: 8px;
+	margin-bottom: 24px;
+}
+
+/* Adding padding */
+.navbar-wrappe{
+	padding: .5em
+}
+
+/* Button Formating */
+.submit_button{
+	background-color: #F9C869;
+	color: black;
+	border: none;
+	border-radius: 8px;
+	font-weight: bold;
+}
+
+/* Text Area Height */
+#email_message{
+	height: 200px;
+}
+
+/* align Bullets */
+li{
+	padding: 5px;
+	display: inline-block;
+}
+
+.about_settings{
+	text-align: left;
+}
+
+
+.overide_button_format{
+    margin-bottom: 10px;
+    background: transparent;
+    border: none;
+    text-decoration: underline;
+    width: auto;
+}

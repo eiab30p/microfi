@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <title>jquery-hover-effect.js</title>
+  <link rel="stylesheet" href="..\..\..\pycco.css">
+</head>
+<body>
+<div id='container'>
+  <div id="background"></div>
+  <div class='section'>
+    <div class='docs'><h1>jquery-hover-effect.js</h1></div>
+  </div>
+  <div class='clearall'>
+  <div class='section' id='section-0'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-0'>#</a>
+      </div>
+      <pre><code> * HoverDir object.
+</code></pre>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span></span><span class="p">(</span><span class="kd">function</span><span class="p">(</span> <span class="nx">$</span><span class="p">,</span> <span class="kc">undefined</span> <span class="p">)</span> <span class="p">{</span>
+		
+	 <span class="o">*</span><span class="err">/</span>
+	<span class="nx">$</span><span class="p">.</span><span class="nx">HoverDir</span> 				<span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">options</span><span class="p">,</span> <span class="nx">element</span> <span class="p">)</span> <span class="p">{</span>
+	
+		<span class="k">this</span><span class="p">.</span><span class="nx">$el</span>	<span class="o">=</span> <span class="nx">$</span><span class="p">(</span> <span class="nx">element</span> <span class="p">);</span>
+		
+		<span class="k">this</span><span class="p">.</span><span class="nx">_init</span><span class="p">(</span> <span class="nx">options</span> <span class="p">);</span>
+		
+	<span class="p">};</span>
+	
+	<span class="nx">$</span><span class="p">.</span><span class="nx">HoverDir</span><span class="p">.</span><span class="nx">defaults</span> 	<span class="o">=</span> <span class="p">{</span>
+		<span class="nx">hoverDelay</span>	<span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+		<span class="nx">reverse</span>		<span class="o">:</span> <span class="kc">false</span>
+	<span class="p">};</span>
+	
+	<span class="nx">$</span><span class="p">.</span><span class="nx">HoverDir</span><span class="p">.</span><span class="nx">prototype</span> 	<span class="o">=</span> <span class="p">{</span>
+		<span class="nx">_init</span> 				<span class="o">:</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">options</span> <span class="p">)</span> <span class="p">{</span>
+			
+			<span class="k">this</span><span class="p">.</span><span class="nx">options</span> 		<span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span> <span class="kc">true</span><span class="p">,</span> <span class="p">{},</span> <span class="nx">$</span><span class="p">.</span><span class="nx">HoverDir</span><span class="p">.</span><span class="nx">defaults</span><span class="p">,</span> <span class="nx">options</span> <span class="p">);</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-1'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-1'>#</a>
+      </div>
+      <p>load the events</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>			<span class="k">this</span><span class="p">.</span><span class="nx">_loadEvents</span><span class="p">();</span>
+			
+		<span class="p">},</span>
+		<span class="nx">_loadEvents</span>			<span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+			
+			<span class="kd">var</span> <span class="nx">_self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+			
+			<span class="k">this</span><span class="p">.</span><span class="nx">$el</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span> <span class="s1">&#39;mouseenter.hoverdir, mouseleave.hoverdir&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">event</span> <span class="p">)</span> <span class="p">{</span>
+				
+				<span class="kd">var</span> <span class="nx">$el</span>			<span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">),</span>
+					<span class="nx">evType</span>		<span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">type</span><span class="p">,</span>
+					<span class="nx">$hoverElem</span>	<span class="o">=</span> <span class="nx">$el</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span> <span class="s1">&#39;article&#39;</span> <span class="p">),</span>
+					<span class="nx">direction</span>	<span class="o">=</span> <span class="nx">_self</span><span class="p">.</span><span class="nx">_getDir</span><span class="p">(</span> <span class="nx">$el</span><span class="p">,</span> <span class="p">{</span> <span class="nx">x</span> <span class="o">:</span> <span class="nx">event</span><span class="p">.</span><span class="nx">pageX</span><span class="p">,</span> <span class="nx">y</span> <span class="o">:</span> <span class="nx">event</span><span class="p">.</span><span class="nx">pageY</span> <span class="p">}</span> <span class="p">),</span>
+					<span class="nx">hoverClasses</span><span class="o">=</span> <span class="nx">_self</span><span class="p">.</span><span class="nx">_getClasses</span><span class="p">(</span> <span class="nx">direction</span> <span class="p">);</span>
+				
+				<span class="nx">$hoverElem</span><span class="p">.</span><span class="nx">removeClass</span><span class="p">();</span>
+				
+				<span class="k">if</span><span class="p">(</span> <span class="nx">evType</span> <span class="o">===</span> <span class="s1">&#39;mouseenter&#39;</span> <span class="p">)</span> <span class="p">{</span>
+					
+					<span class="nx">$hoverElem</span><span class="p">.</span><span class="nx">hide</span><span class="p">().</span><span class="nx">addClass</span><span class="p">(</span> <span class="nx">hoverClasses</span><span class="p">.</span><span class="nx">from</span> <span class="p">);</span>
+					
+					<span class="nx">clearTimeout</span><span class="p">(</span> <span class="nx">_self</span><span class="p">.</span><span class="nx">tmhover</span> <span class="p">);</span>
+					
+					<span class="nx">_self</span><span class="p">.</span><span class="nx">tmhover</span>	<span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+						
+						<span class="nx">$hoverElem</span><span class="p">.</span><span class="nx">show</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+							<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span> <span class="s1">&#39;da-animate&#39;</span> <span class="p">).</span><span class="nx">addClass</span><span class="p">(</span> <span class="nx">hoverClasses</span><span class="p">.</span><span class="nx">to</span> <span class="p">);</span>
+						<span class="p">}</span> <span class="p">);</span>
+						
+					
+					<span class="p">},</span> <span class="nx">_self</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">hoverDelay</span> <span class="p">);</span>
+					
+				<span class="p">}</span>
+				<span class="k">else</span> <span class="p">{</span>
+				
+					<span class="nx">$hoverElem</span><span class="p">.</span><span class="nx">addClass</span><span class="p">(</span> <span class="s1">&#39;da-animate&#39;</span> <span class="p">);</span>
+					
+					<span class="nx">clearTimeout</span><span class="p">(</span> <span class="nx">_self</span><span class="p">.</span><span class="nx">tmhover</span> <span class="p">);</span>
+					
+					<span class="nx">$hoverElem</span><span class="p">.</span><span class="nx">addClass</span><span class="p">(</span> <span class="nx">hoverClasses</span><span class="p">.</span><span class="nx">from</span> <span class="p">);</span>
+					
+				<span class="p">}</span>
+					
+			<span class="p">}</span> <span class="p">);</span>
+			
+		<span class="p">},</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-2'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-2'>#</a>
+      </div>
+      <p>credits : http://stackoverflow.com/a/3647634
+* calculate the x and y to get an angle to the center of the div from that x and y. *</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>		<span class="nx">_getDir</span>				<span class="o">:</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">$el</span><span class="p">,</span> <span class="nx">coordinates</span> <span class="p">)</span> <span class="p">{</span>
+			
+				<span class="cm">/** the width and height of the current div **/</span>
+			<span class="kd">var</span> <span class="nx">w</span> <span class="o">=</span> <span class="nx">$el</span><span class="p">.</span><span class="nx">width</span><span class="p">(),</span>
+				<span class="nx">h</span> <span class="o">=</span> <span class="nx">$el</span><span class="p">.</span><span class="nx">height</span><span class="p">(),</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-3'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-3'>#</a>
+      </div>
+      <ul>
+<li>gets the x value relative to the center of the DIV and "normalize" it *</li>
+<li>the angle and the direction from where the mouse came in/went out clockwise (TRBL=0123);*</li>
+</ul>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>				<span class="nx">x</span> <span class="o">=</span> <span class="p">(</span> <span class="nx">coordinates</span><span class="p">.</span><span class="nx">x</span> <span class="o">-</span> <span class="nx">$el</span><span class="p">.</span><span class="nx">offset</span><span class="p">().</span><span class="nx">left</span> <span class="o">-</span> <span class="p">(</span> <span class="nx">w</span><span class="o">/</span><span class="mi">2</span> <span class="p">))</span> <span class="o">*</span> <span class="p">(</span> <span class="nx">w</span> <span class="o">&gt;</span> <span class="nx">h</span> <span class="o">?</span> <span class="p">(</span> <span class="nx">h</span><span class="o">/</span><span class="nx">w</span> <span class="p">)</span> <span class="o">:</span> <span class="mi">1</span> <span class="p">),</span>
+				<span class="nx">y</span> <span class="o">=</span> <span class="p">(</span> <span class="nx">coordinates</span><span class="p">.</span><span class="nx">y</span> <span class="o">-</span> <span class="nx">$el</span><span class="p">.</span><span class="nx">offset</span><span class="p">().</span><span class="nx">top</span>  <span class="o">-</span> <span class="p">(</span> <span class="nx">h</span><span class="o">/</span><span class="mi">2</span> <span class="p">))</span> <span class="o">*</span> <span class="p">(</span> <span class="nx">h</span> <span class="o">&gt;</span> <span class="nx">w</span> <span class="o">?</span> <span class="p">(</span> <span class="nx">w</span><span class="o">/</span><span class="nx">h</span> <span class="p">)</span> <span class="o">:</span> <span class="mi">1</span> <span class="p">),</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-4'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-4'>#</a>
+      </div>
+      <ul>
+<li>first calculate the angle of the point,
+                add 180 deg to get rid of the negative values
+                divide by 90 to get the quadrant</li>
+</ul>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>				<span class="nx">add</span> <span class="mi">3</span> <span class="nx">and</span> <span class="k">do</span> <span class="nx">a</span> <span class="nx">modulo</span> <span class="nx">by</span> <span class="mi">4</span>  <span class="nx">to</span> <span class="nx">shift</span> <span class="nx">the</span> <span class="nx">quadrants</span> <span class="nx">to</span> <span class="nx">a</span> <span class="nx">proper</span> <span class="nx">clockwise</span> <span class="nx">TRBL</span> <span class="p">(</span><span class="nx">top</span><span class="o">/</span><span class="nx">right</span><span class="o">/</span><span class="nx">bottom</span><span class="o">/</span><span class="nx">left</span><span class="p">)</span> <span class="o">**</span><span class="err">/</span>
+				<span class="nx">direction</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span> <span class="p">(</span> <span class="p">(</span> <span class="p">(</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">atan2</span><span class="p">(</span><span class="nx">y</span><span class="p">,</span> <span class="nx">x</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">180</span> <span class="o">/</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span><span class="p">)</span> <span class="p">)</span> <span class="o">+</span> <span class="mi">180</span> <span class="p">)</span> <span class="o">/</span> <span class="mi">90</span> <span class="p">)</span> <span class="o">+</span> <span class="mi">3</span> <span class="p">)</span>  <span class="o">%</span> <span class="mi">4</span><span class="p">;</span>
+			
+			<span class="k">return</span> <span class="nx">direction</span><span class="p">;</span>
+			
+		<span class="p">},</span>
+		<span class="nx">_getClasses</span>			<span class="o">:</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">direction</span> <span class="p">)</span> <span class="p">{</span>
+			
+			<span class="kd">var</span> <span class="nx">fromClass</span><span class="p">,</span> <span class="nx">toClass</span><span class="p">;</span>
+			
+			<span class="k">switch</span><span class="p">(</span> <span class="nx">direction</span> <span class="p">)</span> <span class="p">{</span>
+				<span class="k">case</span> <span class="mi">0</span><span class="o">:</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-5'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-5'>#</a>
+      </div>
+      <p>from top</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>					<span class="p">(</span> <span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">reverse</span> <span class="p">)</span> <span class="o">?</span> <span class="nx">fromClass</span> <span class="o">=</span> <span class="s1">&#39;da-slideFromTop&#39;</span> <span class="o">:</span> <span class="nx">fromClass</span> <span class="o">=</span> <span class="s1">&#39;da-slideFromBottom&#39;</span><span class="p">;</span>
+					<span class="nx">toClass</span>		<span class="o">=</span> <span class="s1">&#39;da-slideTop&#39;</span><span class="p">;</span>
+					<span class="k">break</span><span class="p">;</span>
+				<span class="k">case</span> <span class="mi">1</span><span class="o">:</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-6'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-6'>#</a>
+      </div>
+      <p>from right</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>					<span class="p">(</span> <span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">reverse</span> <span class="p">)</span> <span class="o">?</span> <span class="nx">fromClass</span> <span class="o">=</span> <span class="s1">&#39;da-slideFromRight&#39;</span> <span class="o">:</span> <span class="nx">fromClass</span> <span class="o">=</span> <span class="s1">&#39;da-slideFromLeft&#39;</span><span class="p">;</span>
+					<span class="nx">toClass</span>		<span class="o">=</span> <span class="s1">&#39;da-slideLeft&#39;</span><span class="p">;</span>
+					<span class="k">break</span><span class="p">;</span>
+				<span class="k">case</span> <span class="mi">2</span><span class="o">:</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-7'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-7'>#</a>
+      </div>
+      <p>from bottom</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>					<span class="p">(</span> <span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">reverse</span> <span class="p">)</span> <span class="o">?</span> <span class="nx">fromClass</span> <span class="o">=</span> <span class="s1">&#39;da-slideFromBottom&#39;</span> <span class="o">:</span> <span class="nx">fromClass</span> <span class="o">=</span> <span class="s1">&#39;da-slideFromTop&#39;</span><span class="p">;</span>
+					<span class="nx">toClass</span>		<span class="o">=</span> <span class="s1">&#39;da-slideTop&#39;</span><span class="p">;</span>
+					<span class="k">break</span><span class="p">;</span>
+				<span class="k">case</span> <span class="mi">3</span><span class="o">:</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-8'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-8'>#</a>
+      </div>
+      <p>from left</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>					<span class="p">(</span> <span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">reverse</span> <span class="p">)</span> <span class="o">?</span> <span class="nx">fromClass</span> <span class="o">=</span> <span class="s1">&#39;da-slideFromLeft&#39;</span> <span class="o">:</span> <span class="nx">fromClass</span> <span class="o">=</span> <span class="s1">&#39;da-slideFromRight&#39;</span><span class="p">;</span>
+					<span class="nx">toClass</span>		<span class="o">=</span> <span class="s1">&#39;da-slideLeft&#39;</span><span class="p">;</span>
+					<span class="k">break</span><span class="p">;</span>
+			<span class="p">};</span>
+			
+			<span class="k">return</span> <span class="p">{</span> <span class="nx">from</span> <span class="o">:</span> <span class="nx">fromClass</span><span class="p">,</span> <span class="nx">to</span><span class="o">:</span> <span class="nx">toClass</span> <span class="p">};</span>
+					
+		<span class="p">}</span>
+	<span class="p">};</span>
+	
+	<span class="kd">var</span> <span class="nx">logError</span> 			<span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">message</span> <span class="p">)</span> <span class="p">{</span>
+		<span class="k">if</span> <span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">console</span> <span class="p">)</span> <span class="p">{</span>
+			<span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span> <span class="nx">message</span> <span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">};</span>
+	
+	<span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">hoverdir</span>			<span class="o">=</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">options</span> <span class="p">)</span> <span class="p">{</span>
+	
+		<span class="k">if</span> <span class="p">(</span> <span class="k">typeof</span> <span class="nx">options</span> <span class="o">===</span> <span class="s1">&#39;string&#39;</span> <span class="p">)</span> <span class="p">{</span>
+			
+			<span class="kd">var</span> <span class="nx">args</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span> <span class="nx">arguments</span><span class="p">,</span> <span class="mi">1</span> <span class="p">);</span>
+			
+			<span class="k">this</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+			
+				<span class="kd">var</span> <span class="nx">instance</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">data</span><span class="p">(</span> <span class="k">this</span><span class="p">,</span> <span class="s1">&#39;hoverdir&#39;</span> <span class="p">);</span>
+				
+				<span class="k">if</span> <span class="p">(</span> <span class="o">!</span><span class="nx">instance</span> <span class="p">)</span> <span class="p">{</span>
+					<span class="nx">logError</span><span class="p">(</span> <span class="s2">&quot;cannot call methods on hoverdir prior to initialization; &quot;</span> <span class="o">+</span>
+					<span class="s2">&quot;attempted to call method &#39;&quot;</span> <span class="o">+</span> <span class="nx">options</span> <span class="o">+</span> <span class="s2">&quot;&#39;&quot;</span> <span class="p">);</span>
+					<span class="k">return</span><span class="p">;</span>
+				<span class="p">}</span>
+				
+				<span class="k">if</span> <span class="p">(</span> <span class="o">!</span><span class="nx">$</span><span class="p">.</span><span class="nx">isFunction</span><span class="p">(</span> <span class="nx">instance</span><span class="p">[</span><span class="nx">options</span><span class="p">]</span> <span class="p">)</span> <span class="o">||</span> <span class="nx">options</span><span class="p">.</span><span class="nx">charAt</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">===</span> <span class="s2">&quot;_&quot;</span> <span class="p">)</span> <span class="p">{</span>
+					<span class="nx">logError</span><span class="p">(</span> <span class="s2">&quot;no such method &#39;&quot;</span> <span class="o">+</span> <span class="nx">options</span> <span class="o">+</span> <span class="s2">&quot;&#39; for hoverdir instance&quot;</span> <span class="p">);</span>
+					<span class="k">return</span><span class="p">;</span>
+				<span class="p">}</span>
+				
+				<span class="nx">instance</span><span class="p">[</span> <span class="nx">options</span> <span class="p">].</span><span class="nx">apply</span><span class="p">(</span> <span class="nx">instance</span><span class="p">,</span> <span class="nx">args</span> <span class="p">);</span>
+			
+			<span class="p">});</span>
+		
+		<span class="p">}</span> 
+		<span class="k">else</span> <span class="p">{</span>
+		
+			<span class="k">this</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+			
+				<span class="kd">var</span> <span class="nx">instance</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">data</span><span class="p">(</span> <span class="k">this</span><span class="p">,</span> <span class="s1">&#39;hoverdir&#39;</span> <span class="p">);</span>
+				<span class="k">if</span> <span class="p">(</span> <span class="o">!</span><span class="nx">instance</span> <span class="p">)</span> <span class="p">{</span>
+					<span class="nx">$</span><span class="p">.</span><span class="nx">data</span><span class="p">(</span> <span class="k">this</span><span class="p">,</span> <span class="s1">&#39;hoverdir&#39;</span><span class="p">,</span> <span class="k">new</span> <span class="nx">$</span><span class="p">.</span><span class="nx">HoverDir</span><span class="p">(</span> <span class="nx">options</span><span class="p">,</span> <span class="k">this</span> <span class="p">)</span> <span class="p">);</span>
+				<span class="p">}</span>
+			<span class="p">});</span>
+		
+		<span class="p">}</span>
+		
+		<span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+		
+	<span class="p">};</span>
+	
+<span class="p">})(</span> <span class="nx">jQuery</span> <span class="p">);</span>
+
+</pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+</div>
+</body>

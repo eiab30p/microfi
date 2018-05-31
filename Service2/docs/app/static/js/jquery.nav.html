@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <title>jquery.nav.js</title>
+  <link rel="stylesheet" href="..\..\..\pycco.css">
+</head>
+<body>
+<div id='container'>
+  <div id="background"></div>
+  <div class='section'>
+    <div class='docs'><h1>jquery.nav.js</h1></div>
+  </div>
+  <div class='clearall'>
+  <div class='section' id='section-0'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-0'>#</a>
+      </div>
+      <ul>
+<li>jQuery One Page Nav Plugin</li>
+<li>http://github.com/davist11/jQuery-One-Page-Nav
+ *</li>
+<li>Copyright (c) 2010 Trevor Davis (http://trevordavis.net)</li>
+<li>Dual licensed under the MIT and GPL licenses.</li>
+<li>Uses the same license as jQuery, see:</li>
+<li>http://jquery.org/license
+ *</li>
+<li>@version 2.1
+ *</li>
+<li>Example usage:</li>
+<li>$('#nav').onePageNav({</li>
+<li>currentClass: 'current',</li>
+<li>changeHash: false,</li>
+<li>scrollSpeed: 750</li>
+<li>});</li>
+</ul>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre><span></span> <span class="o">*</span><span class="err">/</span>
+
+<span class="p">;(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">,</span> <span class="nb">window</span><span class="p">,</span> <span class="nb">document</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">){</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-1'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-1'>#</a>
+      </div>
+      <p>our plugin constructor</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>	<span class="kd">var</span> <span class="nx">OnePageNav</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">elem</span><span class="p">,</span> <span class="nx">options</span><span class="p">){</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">elem</span> <span class="o">=</span> <span class="nx">elem</span><span class="p">;</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">$elem</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nx">elem</span><span class="p">);</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">options</span> <span class="o">=</span> <span class="nx">options</span><span class="p">;</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">metadata</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">$elem</span><span class="p">.</span><span class="nx">data</span><span class="p">(</span><span class="s1">&#39;plugin-options&#39;</span><span class="p">);</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">$nav</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">$elem</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">);</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">$win</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nb">window</span><span class="p">);</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">sections</span> <span class="o">=</span> <span class="p">{};</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">didScroll</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">$doc</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">);</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">docHeight</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">$doc</span><span class="p">.</span><span class="nx">height</span><span class="p">();</span>
+	<span class="p">};</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-2'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-2'>#</a>
+      </div>
+      <p>the plugin prototype</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>	<span class="nx">OnePageNav</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="p">{</span>
+		<span class="nx">defaults</span><span class="o">:</span> <span class="p">{</span>
+			<span class="nx">currentClass</span><span class="o">:</span> <span class="s1">&#39;current&#39;</span><span class="p">,</span>
+			<span class="nx">changeHash</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+			<span class="nx">easing</span><span class="o">:</span> <span class="s1">&#39;swing&#39;</span><span class="p">,</span>
+			<span class="nx">filter</span><span class="o">:</span> <span class="s1">&#39;:not(.external)&#39;</span><span class="p">,</span>
+			<span class="nx">scrollSpeed</span><span class="o">:</span> <span class="mi">750</span><span class="p">,</span>
+			<span class="nx">scrollOffset</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+			<span class="nx">scrollThreshold</span><span class="o">:</span> <span class="mf">0.5</span><span class="p">,</span>
+			<span class="nx">begin</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+			<span class="nx">end</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+			<span class="nx">scrollChange</span><span class="o">:</span> <span class="kc">false</span>
+		<span class="p">},</span>
+
+		<span class="nx">init</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+			<span class="kd">var</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-3'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-3'>#</a>
+      </div>
+      <p>Introduce defaults that can be extended either
+globally or using an object literal.</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>			<span class="nx">self</span><span class="p">.</span><span class="nx">config</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">extend</span><span class="p">({},</span> <span class="nx">self</span><span class="p">.</span><span class="nx">defaults</span><span class="p">,</span> <span class="nx">self</span><span class="p">.</span><span class="nx">options</span><span class="p">,</span> <span class="nx">self</span><span class="p">.</span><span class="nx">metadata</span><span class="p">);</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-4'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-4'>#</a>
+      </div>
+      <p>Filter any links out of the nav</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>			<span class="k">if</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">filter</span> <span class="o">!==</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="p">{</span>
+				<span class="nx">self</span><span class="p">.</span><span class="nx">$nav</span> <span class="o">=</span> <span class="nx">self</span><span class="p">.</span><span class="nx">$nav</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">filter</span><span class="p">);</span>
+			<span class="p">}</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-5'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-5'>#</a>
+      </div>
+      <p>Handle clicks on the nav</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>			<span class="nx">self</span><span class="p">.</span><span class="nx">$nav</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;click.onePageNav&#39;</span><span class="p">,</span> <span class="nx">$</span><span class="p">.</span><span class="nx">proxy</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">handleClick</span><span class="p">,</span> <span class="nx">self</span><span class="p">));</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-6'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-6'>#</a>
+      </div>
+      <p>Get the section positions</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>			<span class="nx">self</span><span class="p">.</span><span class="nx">getPositions</span><span class="p">();</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-7'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-7'>#</a>
+      </div>
+      <p>Handle scroll changes</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>			<span class="nx">self</span><span class="p">.</span><span class="nx">bindInterval</span><span class="p">();</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-8'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-8'>#</a>
+      </div>
+      <p>Update the positions on resize too</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>			<span class="nx">self</span><span class="p">.</span><span class="nx">$win</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;resize.onePageNav&#39;</span><span class="p">,</span> <span class="nx">$</span><span class="p">.</span><span class="nx">proxy</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">getPositions</span><span class="p">,</span> <span class="nx">self</span><span class="p">));</span>
+
+			<span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+		<span class="p">},</span>
+		
+		<span class="nx">adjustNav</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">self</span><span class="p">,</span> <span class="nx">$parent</span><span class="p">)</span> <span class="p">{</span>
+			<span class="nx">self</span><span class="p">.</span><span class="nx">$elem</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="nx">self</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">currentClass</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">currentClass</span><span class="p">);</span>
+			<span class="nx">$parent</span><span class="p">.</span><span class="nx">addClass</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">currentClass</span><span class="p">);</span>
+		<span class="p">},</span>
+		
+		<span class="nx">bindInterval</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+			<span class="kd">var</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+			<span class="kd">var</span> <span class="nx">docHeight</span><span class="p">;</span>
+			
+			<span class="nx">self</span><span class="p">.</span><span class="nx">$win</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;scroll.onePageNav&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+				<span class="nx">self</span><span class="p">.</span><span class="nx">didScroll</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+			<span class="p">});</span>
+			
+			<span class="nx">self</span><span class="p">.</span><span class="nx">t</span> <span class="o">=</span> <span class="nx">setInterval</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+				<span class="nx">docHeight</span> <span class="o">=</span> <span class="nx">self</span><span class="p">.</span><span class="nx">$doc</span><span class="p">.</span><span class="nx">height</span><span class="p">();</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-9'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-9'>#</a>
+      </div>
+      <p>If it was scrolled</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>				<span class="k">if</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">didScroll</span><span class="p">)</span> <span class="p">{</span>
+					<span class="nx">self</span><span class="p">.</span><span class="nx">didScroll</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+					<span class="nx">self</span><span class="p">.</span><span class="nx">scrollChange</span><span class="p">();</span>
+				<span class="p">}</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-10'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-10'>#</a>
+      </div>
+      <p>If the document height changes</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>				<span class="k">if</span><span class="p">(</span><span class="nx">docHeight</span> <span class="o">!==</span> <span class="nx">self</span><span class="p">.</span><span class="nx">docHeight</span><span class="p">)</span> <span class="p">{</span>
+					<span class="nx">self</span><span class="p">.</span><span class="nx">docHeight</span> <span class="o">=</span> <span class="nx">docHeight</span><span class="p">;</span>
+					<span class="nx">self</span><span class="p">.</span><span class="nx">getPositions</span><span class="p">();</span>
+				<span class="p">}</span>
+			<span class="p">},</span> <span class="mi">250</span><span class="p">);</span>
+		<span class="p">},</span>
+		
+		<span class="nx">getHash</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$link</span><span class="p">)</span> <span class="p">{</span>
+			<span class="k">return</span> <span class="nx">$link</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">).</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">];</span>
+		<span class="p">},</span>
+		
+		<span class="nx">getPositions</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+			<span class="kd">var</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+			<span class="kd">var</span> <span class="nx">linkHref</span><span class="p">;</span>
+			<span class="kd">var</span> <span class="nx">topPos</span><span class="p">;</span>
+			
+			<span class="nx">self</span><span class="p">.</span><span class="nx">$nav</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+				<span class="nx">linkHref</span> <span class="o">=</span> <span class="nx">self</span><span class="p">.</span><span class="nx">getHash</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>
+				<span class="nx">topPos</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#&#39;</span> <span class="o">+</span> <span class="nx">linkHref</span><span class="p">).</span><span class="nx">offset</span><span class="p">().</span><span class="nx">top</span><span class="p">;</span>
+			
+				<span class="nx">self</span><span class="p">.</span><span class="nx">sections</span><span class="p">[</span><span class="nx">linkHref</span><span class="p">]</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">topPos</span><span class="p">)</span> <span class="o">-</span> <span class="nx">self</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">scrollOffset</span><span class="p">;</span>
+			<span class="p">});</span>
+		<span class="p">},</span>
+		
+		<span class="nx">getSection</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">windowPos</span><span class="p">)</span> <span class="p">{</span>
+			<span class="kd">var</span> <span class="nx">returnValue</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+			<span class="kd">var</span> <span class="nx">windowHeight</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">$win</span><span class="p">.</span><span class="nx">height</span><span class="p">()</span> <span class="o">*</span> <span class="k">this</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">scrollThreshold</span><span class="p">);</span>
+
+			<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">section</span> <span class="k">in</span> <span class="k">this</span><span class="p">.</span><span class="nx">sections</span><span class="p">)</span> <span class="p">{</span>
+				<span class="k">if</span><span class="p">((</span><span class="k">this</span><span class="p">.</span><span class="nx">sections</span><span class="p">[</span><span class="nx">section</span><span class="p">]</span> <span class="o">-</span> <span class="nx">windowHeight</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nx">windowPos</span><span class="p">)</span> <span class="p">{</span>
+					<span class="nx">returnValue</span> <span class="o">=</span> <span class="nx">section</span><span class="p">;</span>
+				<span class="p">}</span>
+			<span class="p">}</span>
+			
+			<span class="k">return</span> <span class="nx">returnValue</span><span class="p">;</span>
+		<span class="p">},</span>
+		
+		<span class="nx">handleClick</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+			<span class="kd">var</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+			<span class="kd">var</span> <span class="nx">$link</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">currentTarget</span><span class="p">);</span>
+			<span class="kd">var</span> <span class="nx">$parent</span> <span class="o">=</span> <span class="nx">$link</span><span class="p">.</span><span class="nx">parent</span><span class="p">();</span>
+			<span class="kd">var</span> <span class="nx">newLoc</span> <span class="o">=</span> <span class="s1">&#39;#&#39;</span> <span class="o">+</span> <span class="nx">self</span><span class="p">.</span><span class="nx">getHash</span><span class="p">(</span><span class="nx">$link</span><span class="p">);</span>
+			
+			<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">$parent</span><span class="p">.</span><span class="nx">hasClass</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">currentClass</span><span class="p">))</span> <span class="p">{</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-11'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-11'>#</a>
+      </div>
+      <p>Start callback</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>				<span class="k">if</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">begin</span><span class="p">)</span> <span class="p">{</span>
+					<span class="nx">self</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">begin</span><span class="p">();</span>
+				<span class="p">}</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-12'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-12'>#</a>
+      </div>
+      <p>Change the highlighted nav item</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>				<span class="nx">self</span><span class="p">.</span><span class="nx">adjustNav</span><span class="p">(</span><span class="nx">self</span><span class="p">,</span> <span class="nx">$parent</span><span class="p">);</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-13'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-13'>#</a>
+      </div>
+      <p>Removing the auto-adjust on scroll</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>				<span class="nx">self</span><span class="p">.</span><span class="nx">unbindInterval</span><span class="p">();</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-14'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-14'>#</a>
+      </div>
+      <p>Scroll to the correct position</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>				<span class="nx">$</span><span class="p">.</span><span class="nx">scrollTo</span><span class="p">(</span><span class="nx">newLoc</span><span class="p">,</span> <span class="nx">self</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">scrollSpeed</span><span class="p">,</span> <span class="p">{</span>
+					<span class="nx">axis</span><span class="o">:</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span>
+					<span class="nx">easing</span><span class="o">:</span> <span class="nx">self</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">easing</span><span class="p">,</span>
+					<span class="nx">offset</span><span class="o">:</span> <span class="p">{</span>
+						<span class="nx">top</span><span class="o">:</span> <span class="o">-</span><span class="nx">self</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">scrollOffset</span>
+					<span class="p">},</span>
+					<span class="nx">onAfter</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-15'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-15'>#</a>
+      </div>
+      <p>Do we need to change the hash?</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>						<span class="k">if</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">changeHash</span><span class="p">)</span> <span class="p">{</span>
+							<span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">hash</span> <span class="o">=</span> <span class="nx">newLoc</span><span class="p">;</span>
+						<span class="p">}</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-16'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-16'>#</a>
+      </div>
+      <p>Add the auto-adjust on scroll back in</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>						<span class="nx">self</span><span class="p">.</span><span class="nx">bindInterval</span><span class="p">();</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-17'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-17'>#</a>
+      </div>
+      <p>End callback</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>						<span class="k">if</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">end</span><span class="p">)</span> <span class="p">{</span>
+							<span class="nx">self</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
+						<span class="p">}</span>
+					<span class="p">}</span>
+				<span class="p">});</span>
+			<span class="p">}</span>
+
+			<span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+		<span class="p">},</span>
+		
+		<span class="nx">scrollChange</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+			<span class="kd">var</span> <span class="nx">windowTop</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">$win</span><span class="p">.</span><span class="nx">scrollTop</span><span class="p">();</span>
+			<span class="kd">var</span> <span class="nx">position</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getSection</span><span class="p">(</span><span class="nx">windowTop</span><span class="p">);</span>
+			<span class="kd">var</span> <span class="nx">$parent</span><span class="p">;</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-18'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-18'>#</a>
+      </div>
+      <p>If the position is set</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>			<span class="k">if</span><span class="p">(</span><span class="nx">position</span> <span class="o">!==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+				<span class="nx">$parent</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">$elem</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;a[href$=&quot;#&#39;</span> <span class="o">+</span> <span class="nx">position</span> <span class="o">+</span> <span class="s1">&#39;&quot;]&#39;</span><span class="p">).</span><span class="nx">parent</span><span class="p">();</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-19'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-19'>#</a>
+      </div>
+      <p>If it's not already the current section</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>				<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">$parent</span><span class="p">.</span><span class="nx">hasClass</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">currentClass</span><span class="p">))</span> <span class="p">{</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-20'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-20'>#</a>
+      </div>
+      <p>Change the highlighted nav item</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>					<span class="k">this</span><span class="p">.</span><span class="nx">adjustNav</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">$parent</span><span class="p">);</span></pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+  <div class='section' id='section-21'>
+    <div class='docs'>
+      <div class='octowrap'>
+        <a class='octothorpe' href='#section-21'>#</a>
+      </div>
+      <p>If there is a scrollChange callback</p>
+    </div>
+    <div class='code'>
+      <div class="highlight"><pre>					<span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">scrollChange</span><span class="p">)</span> <span class="p">{</span>
+						<span class="k">this</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">scrollChange</span><span class="p">(</span><span class="nx">$parent</span><span class="p">);</span>
+					<span class="p">}</span>
+				<span class="p">}</span>
+			<span class="p">}</span>
+		<span class="p">},</span>
+		
+		<span class="nx">unbindInterval</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+			<span class="nx">clearInterval</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">t</span><span class="p">);</span>
+			<span class="k">this</span><span class="p">.</span><span class="nx">$win</span><span class="p">.</span><span class="nx">unbind</span><span class="p">(</span><span class="s1">&#39;scroll.onePageNav&#39;</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">};</span>
+
+	<span class="nx">OnePageNav</span><span class="p">.</span><span class="nx">defaults</span> <span class="o">=</span> <span class="nx">OnePageNav</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">defaults</span><span class="p">;</span>
+
+	<span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">onePageNav</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+			<span class="k">new</span> <span class="nx">OnePageNav</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">options</span><span class="p">).</span><span class="nx">init</span><span class="p">();</span>
+		<span class="p">});</span>
+	<span class="p">};</span>
+	
+<span class="p">})(</span> <span class="nx">jQuery</span><span class="p">,</span> <span class="nb">window</span> <span class="p">,</span> <span class="nb">document</span> <span class="p">);</span>
+
+</pre></div>
+    </div>
+  </div>
+  <div class='clearall'></div>
+</div>
+</body>
